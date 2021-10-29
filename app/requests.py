@@ -19,7 +19,7 @@ def all_news():
                                         sources='bbc-news,the-verge',
                                         language='en',
                                         sort_by='relevancy',
-                                        page=2)
+                                        page=1)
     return all_articles
 
 # /v2/top-headlines/sources
