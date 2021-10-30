@@ -29,9 +29,9 @@ def headlines():
 def all_news():
     all_articles = []
     allArticles = newsapi.get_everything(q='',
-                                        sources='bbc-news,the-verge',
+                                        sources='bbc-news,the-verge,nbc-news',
                                         language='en',
-                                        sort_by='relevancy',
+                                        sort_by='publishedAt',
                                         page=1)
     headlines_news =  allArticles
     articles = headlines_news['articles']
@@ -51,8 +51,29 @@ def all_news():
     return all_articles
 
 
-def search_news(searchTerm):
-    found_articles = newsapi.get_everything(q =searchTerm , sort_by= 'popularity')
+def search_category(category):
+    found_articles = []
+    allArticles = newsapi.get_top_headlines( q = '',
+                                            country='us',
+                                            category = f'{category}' )
+    
+    articles = allArticles['articles']
+    for i in range(len(articles)):
+        article = articles[i]
+
+        title = article['title']
+        content = article['content']
+        description = article['description']
+        urlToImage = article['urlToImage']
+        publishedAt = article['publishedAt']
+        url = article['url']
+        author = article['author']
+
+        new_article =  News(title, content, description, urlToImage, publishedAt,url,author)
+        found_articles.append(new_article)
+        
+    return found_articles
+    
     
 # /v2/top-headlines/sources
 sources = newsapi.get_sources()
