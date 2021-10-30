@@ -1,8 +1,6 @@
 {% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
 {% block content%}
-    {% for news,contents, description,images, pub_Date,authors, links in allnews %}
-    <a href="{{links}}"> <img src="{{images}}" alt="">  </a>
-    {{ pub_Date}} {{ authors}}
-    {{ description}}
-    {% endfor%}
+ {{macro.displayNews(allnews)}}
 {% endblock%}

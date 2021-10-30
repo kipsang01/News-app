@@ -65,4 +65,4 @@ def headline_articles():
         headlinesNews = zip(news,contents, description,images, pub_Date,authors, links)
     
     
-    return render_template('home.html', allnews = headlinesNews)
+    return render_template('home.html', headlinesNews = headlinesNews)
