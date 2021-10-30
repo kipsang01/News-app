@@ -22,5 +22,9 @@ def all_news():
                                         page=1)
     return all_articles
 
+
+def search_news(searchTerm):
+    found_articles = newsapi.get_everything(q =searchTerm , sort_by= 'popularity')
+    
 # /v2/top-headlines/sources
 sources = newsapi.get_sources()
