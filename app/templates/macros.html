@@ -1,9 +1,18 @@
 {% macro displayNews(news_list) %}
 
-    {% for news,contents, description,images, pub_Date,authors, links in news_list %}
-    <a href="{{links}}"> <img src="{{images}}" alt="">  </a>
-    {{ pub_Date}} {{ authors}}
-    {{ description}}
+    {% for news in news_list %}
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{news.url}}"> <img src="{{news.urlToImage}}" alt="">  </a>
+            </div>
+            <div class="col-md-6">
+                <h3>{{news.title}}</h3>
+                <blockquote>{{news.description}}</blockquote>
+                <small> Published: {{ news.publishedAt}} By {{ news.author}}</small>
+            </div>
+        </div>
+        </div>
+    </div>
     {% endfor%}
-
 {% endmacro%}
