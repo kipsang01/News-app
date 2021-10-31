@@ -73,6 +73,34 @@ def search_category(category):
         found_articles.append(new_article)
         
     return found_articles
+
+
+
+def search_News(searchTerm):
+    found_news = []
+    allArticles = newsapi.get_everything( q = f'{searchTerm}',
+                                            sources='bbc-news,the-verge,nbc-news',
+                                            domains='bbc.co.uk,techcrunch.com',
+                                            language='en',
+                                            sort_by='relevancy',
+                                            page=2 )
+    
+    articles = allArticles['articles']
+    for i in range(len(articles)):
+        article = articles[i]
+
+        title = article['title']
+        content = article['content']
+        description = article['description']
+        urlToImage = article['urlToImage']
+        publishedAt = article['publishedAt']
+        url = article['url']
+        author = article['author']
+
+        new_article =  News(title, content, description, urlToImage, publishedAt,url,author)
+        found_news.append(new_article)
+        
+    return found_news
     
     
 # /v2/top-headlines/sources
