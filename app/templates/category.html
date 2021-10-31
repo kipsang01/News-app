@@ -1,6 +1,8 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
+{% block title%}{{category}}{%endblock%}
+
 {% block content%}
 
  {{macro.displayNews(category_news)}}

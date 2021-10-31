@@ -13,7 +13,7 @@ def headlines():
     articles = headlines_news['articles']
     for i in range(len(articles)):
         article = articles[i]
-        source = articles['source["name"]']
+        source = article['source']
         title = article['title']
         content = article['content']
         description = article['description']
@@ -38,7 +38,7 @@ def all_news():
     for i in range(len(articles)):
         article = articles[i]
 
-        source = articles['source["name"]']
+        source = article['source']
         title = article['title']
         content = article['content']
         description = article['description']
@@ -62,7 +62,7 @@ def search_category(category):
     for i in range(len(articles)):
         article = articles[i]
 
-        source = articles['source["name"]']
+        source = article['source']
         title = article['title']
         content = article['content']
         description = article['description']
@@ -91,7 +91,7 @@ def search_News(searchTerm):
     for i in range(len(articles)):
         article = articles[i]
 
-        source = articles['source["name"]']
+        source = article['source']
         title = article['title']
         content = article['content']
         description = article['description']

@@ -3,16 +3,15 @@
     {% for news in news_list %}
     <div class="card">
         <div class="row">
-            <a href="{{news.url}}"></a>
                 <div class="col-md-6">              
                 <img src="{{news.urlToImage}}" alt="">
                 </div>
                 <div class="col-md-6">
-                    <h3>{{news.title}}</h3>
+                    <a href="{{news.url}}"><h3>{{news.title}}</h3></a>
                     <small><i>Published: {{ news.publishedAt}}</i> </small><br>
                     <blockquote>{{news.description}}</blockquote>
-                    <small>Source: {{news.source}}  By {{ news.author}}</small>
-                </div></a>
+                    <small>Source: {{news.source['name']}}  By {{ news.author}}</small>
+                </div>
         </div>
     </div>
     {% endfor%}

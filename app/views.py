@@ -33,7 +33,7 @@ def categoryNews(category):
     if request.method == 'POST' and form.validate_on_submit():
         searchTerm = form.searchTerm.data
         return redirect(url_for('views.searchNews', searchTerm =searchTerm))
-    return render_template('category.html', category_news = category_news, form=form)
+    return render_template('category.html', category_news = category_news, form=form, category = category)
 
 
 @views.route('home/search/<searchTerm>', methods = ['GET','POST'])
@@ -44,4 +44,4 @@ def searchNews(searchTerm):
         searchTerm = form.searchTerm.data
         return redirect(url_for('views.searchNews', searchTerm =searchTerm, form = form))
     
-    return render_template('search.html', found_news = found_news)
+    return render_template('search.html', found_news = found_news, form=form, searchTerm=searchTerm)
