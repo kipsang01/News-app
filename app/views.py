@@ -40,8 +40,14 @@ def categoryNews(category):
 def searchNews(searchTerm):
     found_news = search_News(searchTerm)
     form = SearchForm()
+    print(found_news)
     if request.method == 'POST' and form.validate_on_submit():
         searchTerm = form.searchTerm.data
         return redirect(url_for('views.searchNews', searchTerm =searchTerm, form = form))
     
     return render_template('search.html', found_news = found_news, form=form, searchTerm=searchTerm)
+
+
+@views.errorhandler(404)
+def not_found(error):
+    return render_template('notFound.html', error =error)

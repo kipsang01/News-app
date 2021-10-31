@@ -82,7 +82,6 @@ def search_News(searchTerm):
     found_news = []
     allArticles = newsapi.get_everything( q = f'{searchTerm}',
                                             sources='bbc-news,the-verge,nbc-news',
-                                            domains='bbc.co.uk,techcrunch.com',
                                             language='en',
                                             sort_by='relevancy',
                                             page=2 )
