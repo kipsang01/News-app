@@ -13,7 +13,7 @@ def headlines():
     articles = headlines_news['articles']
     for i in range(len(articles)):
         article = articles[i]
-
+        source = articles['source["name"]']
         title = article['title']
         content = article['content']
         description = article['description']
@@ -22,7 +22,7 @@ def headlines():
         url = article['url']
         author = article['author']
 
-        new_article =  News(title, content, description, urlToImage, publishedAt,url,author)
+        new_article =  News(source,title, content, description, urlToImage, publishedAt,url,author)
         top_headlines.append(new_article)
     return top_headlines
 
@@ -38,6 +38,7 @@ def all_news():
     for i in range(len(articles)):
         article = articles[i]
 
+        source = articles['source["name"]']
         title = article['title']
         content = article['content']
         description = article['description']
@@ -46,7 +47,7 @@ def all_news():
         url = article['url']
         author = article['author']
 
-        new_article =  News(title, content, description, urlToImage, publishedAt,url,author)
+        new_article =  News(source,title, content, description, urlToImage, publishedAt,url,author)
         all_articles.append(new_article)
     return all_articles
 
@@ -61,6 +62,7 @@ def search_category(category):
     for i in range(len(articles)):
         article = articles[i]
 
+        source = articles['source["name"]']
         title = article['title']
         content = article['content']
         description = article['description']
@@ -69,7 +71,7 @@ def search_category(category):
         url = article['url']
         author = article['author']
 
-        new_article =  News(title, content, description, urlToImage, publishedAt,url,author)
+        new_article =  News(source,title, content, description, urlToImage, publishedAt,url,author)
         found_articles.append(new_article)
         
     return found_articles
@@ -89,6 +91,7 @@ def search_News(searchTerm):
     for i in range(len(articles)):
         article = articles[i]
 
+        source = articles['source["name"]']
         title = article['title']
         content = article['content']
         description = article['description']
@@ -97,11 +100,12 @@ def search_News(searchTerm):
         url = article['url']
         author = article['author']
 
-        new_article =  News(title, content, description, urlToImage, publishedAt,url,author)
+        new_article =  News(source,title, content, description, urlToImage, publishedAt,url,author)
         found_news.append(new_article)
         
     return found_news
     
     
-# /v2/top-headlines/sources
-sources = newsapi.get_sources()
+def source_News():
+    
+    sources = newsapi.get_sources()

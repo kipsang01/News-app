@@ -1,6 +1,7 @@
 class News:
     
-    def __init__(self,title, content, description, urlToImage, publishedAt,url,author):
+    def __init__(self,source,title, content, description, urlToImage, publishedAt,url,author):
+        self.source = source
         self.title = title
         self.content = content
         self.description = description
