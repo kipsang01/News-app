@@ -29,7 +29,33 @@ def headlines():
 def all_news():
     all_articles = []
     allArticles = newsapi.get_everything(q='',
-                                        sources='bbc-news,the-verge,nbc-news',
+                                        sources=f'bbc-news, the-verge, nbc-news',
+                                        language='en',
+                                        sort_by='publishedAt',
+                                        page=1)
+    headlines_news =  allArticles
+    articles = headlines_news['articles']
+    for i in range(len(articles)):
+        article = articles[i]
+
+        source = article['source']
+        title = article['title']
+        content = article['content']
+        description = article['description']
+        urlToImage = article['urlToImage']
+        publishedAt = article['publishedAt']
+        url = article['url']
+        author = article['author']
+
+        new_article =  News(source,title, content, description, urlToImage, publishedAt,url,author)
+        all_articles.append(new_article)
+    return all_articles
+
+
+def source_news(sourceChannel):
+    all_articles = []
+    allArticles = newsapi.get_everything(q='',
+                                        sources=f'{sourceChannel}',
                                         language='en',
                                         sort_by='publishedAt',
                                         page=1)

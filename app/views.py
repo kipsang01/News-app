@@ -1,12 +1,21 @@
 from flask import Blueprint,render_template,redirect,url_for,request
-from .requests import  all_news, headlines, search_category, search_News
+from .requests import  all_news, headlines, search_category, search_News,source_news
 from .forms import  SearchForm
 
 views = Blueprint('views', __name__)
 
 @views.route('home/All-news',  methods = ['GET', 'POST'])
-def allNews():
+def all_News():
     allnews = all_news()
+    form = SearchForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        searchTerm = form.searchTerm.data
+        return redirect(url_for('views.searchNews', searchTerm =searchTerm))
+    return render_template('All-news.html', allnews = allnews,form=form)
+
+@views.route('home/<sourceChannel>',  methods = ['GET', 'POST'])
+def channel_News(sourceChannel):
+    allnews = source_news(sourceChannel)
     form = SearchForm()
     if request.method == 'POST' and form.validate_on_submit():
         searchTerm = form.searchTerm.data
@@ -40,12 +49,14 @@ def categoryNews(category):
 def searchNews(searchTerm):
     found_news = search_News(searchTerm)
     form = SearchForm()
-    print(found_news)
-    if request.method == 'POST' and form.validate_on_submit():
-        searchTerm = form.searchTerm.data
-        return redirect(url_for('views.searchNews', searchTerm =searchTerm, form = form))
-    
-    return render_template('search.html', found_news = found_news, form=form, searchTerm=searchTerm)
+    if found_news:
+        if request.method == 'POST' and form.validate_on_submit():
+            searchTerm = form.searchTerm.data
+            return redirect(url_for('views.searchNews', searchTerm =searchTerm, form = form))
+        
+        return render_template('search.html', found_news = found_news, form=form, searchTerm=searchTerm)
+    else:
+        return render_template('error.html', form=form)
 
 
 @views.errorhandler(404)

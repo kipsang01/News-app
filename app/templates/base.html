@@ -16,7 +16,9 @@
     {% include 'form.html'%}
         <div class="row">
             <div class="col-md-2">
-
+                {% block source%}
+                {% include 'source.html'%}
+                {% endblock%}
             </div>
             <div class="col-md-10">
                 {% block content%}
