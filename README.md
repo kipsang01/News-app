@@ -8,7 +8,9 @@ Enock Kipsang
 ## Installation
 
 install [python](https://www.python.org/downloads/)
+
 install the following requirements:
+
 certifi==2021.10.8
 charset-normalizer==2.0.7
 click==7.1.2
