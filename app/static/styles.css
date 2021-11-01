@@ -1,4 +1,20 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    background-color: #D1D1D1;
+}
+.navbar-brand{
+
+    font-family: 'Great Vibes', cursive;
+}
+
+
 img{
     height:100%;
     width:100%
+}
+a:active{
+    background-color: green;
+}
+.list-group a:focus{
+    background-color: green;
 }

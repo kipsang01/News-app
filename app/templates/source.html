@@ -1,10 +1,12 @@
 
-  <div class="list-group sticky-top">
-    <a href="{{  url_for('views.channel_News',sourceChannel = 'bbc-news') }}" class="list-group-item list-group-item-action active" aria-current="true">
+  <div class="list-group ">
+    <h2>Sources</h2>
+    <a href="{{  url_for('views.channel_News',sourceChannel = 'bbc-news') }}" class="list-group-item list-group-item-action" aria-current="true">
       BBC NEWS
     </a>
     <a href="{{  url_for('views.channel_News',sourceChannel = 'nbc-news') }}" class="list-group-item list-group-item-action">NBC NEWS</a>
-    <a href="{{  url_for('views.channel_News',sourceChannel = 'cnbc-news') }}" class="list-group-item list-group-item-action">CNBC NEWS</a>
-    <a href="{{  url_for('views.channel_News',sourceChannel = 'bbc-news') }}" class="list-group-item list-group-item-action">AL JAZEERA</a>
-    <a href="{{  url_for('views.channel_News',sourceChannel = 'sky-news') }}" class="list-group-item list-group-item-action">SKY NEWS</a>
+    <a href="{{  url_for('views.channel_News',sourceChannel = 'al-jazeera-english') }}" class="list-group-item list-group-item-action">AL JAZEERA</a>
+    <a href="{{  url_for('views.channel_News',sourceChannel = 'cnn') }}" class="list-group-item list-group-item-action">CNN NEWS</a>
+    <a href="{{  url_for('views.channel_News',sourceChannel = 'fox-news') }}" class="list-group-item list-group-item-action">FOX NEWS</a>
+    <a href="{{  url_for('views.channel_News',sourceChannel = 'business-insider') }}" class="list-group-item list-group-item-action">BUSINESS-INSIDER</a>
   </div>

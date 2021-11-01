@@ -1,8 +1,9 @@
-from config import Api_Key
+from config import Config
 from newsapi import NewsApiClient
 from .models import News
 
 # Init
+Api_Key = Config.Api_Key
 newsapi = NewsApiClient(api_key= Api_Key)
 
 def headlines():
@@ -80,11 +81,10 @@ def source_news(sourceChannel):
 
 def search_category(category):
     found_articles = []
-    allArticles = newsapi.get_top_headlines( q = '',
-                                            country='us',
+    all_Articles = newsapi.get_top_headlines( q = '',
                                             category = f'{category}' )
     
-    articles = allArticles['articles']
+    articles = all_Articles['articles']
     for i in range(len(articles)):
         article = articles[i]
 
@@ -131,6 +131,6 @@ def search_News(searchTerm):
     return found_news
     
     
-def source_News():
+# def source_News():
     
-    sources = newsapi.get_sources()
+#     sources = newsapi.get_sources()

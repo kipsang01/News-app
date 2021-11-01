@@ -15,12 +15,12 @@ def all_News():
 
 @views.route('home/<sourceChannel>',  methods = ['GET', 'POST'])
 def channel_News(sourceChannel):
-    allnews = source_news(sourceChannel)
+    allchannelnews = source_news(sourceChannel)
     form = SearchForm()
     if request.method == 'POST' and form.validate_on_submit():
         searchTerm = form.searchTerm.data
         return redirect(url_for('views.searchNews', searchTerm =searchTerm))
-    return render_template('All-news.html', allnews = allnews,form=form)
+    return render_template('All-news.html', allnews = allchannelnews,form=form)
 
 
 @views.route('/' , methods = ['GET', 'POST'])
@@ -35,7 +35,7 @@ def headline_articles():
 
 
 
-@views.route('home/<category>', methods = ['GET', 'POST'])
+@views.route('home/All-news/<category>', methods = ['GET', 'POST'])
 def categoryNews(category):
     category_news = search_category(category)
     form = SearchForm()
